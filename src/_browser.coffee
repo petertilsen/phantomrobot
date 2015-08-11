@@ -103,6 +103,13 @@ details about that.
                 for link in queryAll document, "xpath=//a"
                     if href_or_text in [link.href, link.text]
                         results.push link
+            else if /^id=(.*)/.test locator
+                id = locator.match(/^id=(.*)/)[1]
+                if result = document.getElementById id
+                    results.push result
+                else
+                    for result in document.getElementsByName id
+                        results.push result
             else if /^dom=(.*)/.test locator
                 path = locator.match(/^dom=(.*)/)[1]
                 try result = eval(path)
