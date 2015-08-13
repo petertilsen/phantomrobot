@@ -28,6 +28,28 @@ Types the given text into text field identified by locator.
     status: "FAIL",\
     error: "Input '#{locator}' was not found."
 
+keyword "Select checkbox",
+"""
+Sets checkbox
+""",
+(locator) ->
+    for element in queryAll document, locator
+        element.checked = true
+        return status: "PASS"
+    status: "FAIL",\
+    error: "Checkbox '#{locator}' was not found."
+
+keyword "Unselect checkbox",
+"""
+Unsets checkbox
+""",
+(locator) ->
+    for element in queryAll document, locator
+        element.checked = false
+        return status: "PASS"
+    status: "FAIL",\
+    error: "Checkbox '#{locator}' was not found."
+
 
 keyword "Select from list",
 """
