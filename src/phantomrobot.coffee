@@ -28,6 +28,7 @@ class PhantomProxy
     constructor: (port, timeout, sleep) ->
         # Define a socket.io-server to be connected by PhantomJS.
         @io = io.listen(port + 1)
+        @io.set('log level',0)
         console.log "Listening for PhantomJS on port #{port + 1}"
 
         # On a socket.io-connection, launch the XML-RPC-server.
