@@ -179,6 +179,17 @@ _error_ can be used to override the default error message.
     error: error or "Page did not contain '#{locator}'."
 
 
+keyword "Wait",
+"""
+Waits until timeout is done
+""",
+(timeout) ->
+    now = new Date().getTime()
+    while new Date().getTime() < now + parseInt timeout
+      console.log "Waiting for wait timeout"
+  
+    status: "PASS"
+    
 keyword "Page should not contain element",
 """
 Verifies element identified by locator is not found from current page.
