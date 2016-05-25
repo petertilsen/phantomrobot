@@ -33,12 +33,17 @@ _alias_ is an optional alias for the browser instance and it can be used for
 switching between browsers similarly as the index. See Switch Browser for more
 details about that.
 """,
-([url, userAgent, alias, viewportSize], callback) ->
+([url, userAgent, alias, viewportSize, credentials], callback) ->
     browser = do require("webpage").create
     browser.settings.userAgent = userAgent
+
     viewportSize = viewportSize.split ","
     browser.viewportSize = width: viewportSize[0], height: viewportSize[1]
 
+    credentials = credentials.split ","
+    browser.settings.userName = credentials[0]
+    browser.settings.password = credentials[1]
+    
     #
     # Init browser (page) intance with a lot of magic.
     #
